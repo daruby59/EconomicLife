@@ -1,0 +1,1748 @@
+<html>  
+  <head>  
+    <title>Your Economic Life</title>
+<style type="text/css">
+
+x {
+font-family: arial, helvetica, sans-serif;
+
+color: maroon;
+
+font-size: 10pt;
+
+font-variant:small-caps;
+
+text-decoration:none;
+
+text-align:left;
+
+width: 800px;
+
+height: 25px;
+left-margin:10px;
+
+padding-left: 5px;
+
+display: block;
+
+background: #eeeeee;
+
+border-bottom:solid thin #6496db;
+
+border-left: thick solid #6496db;
+
+border-right: thick solid #6496db;
+
+
+}
+
+
+x:hover {
+zbackground: #6496db;
+background: #dedede;
+}
+x1 {
+font-family: arial, helvetica, sans-serif;
+
+color: maroon;
+
+font-size: 10pt;
+
+font-variant:small-caps;
+
+text-decoration:none;
+
+text-align:center;
+
+width: 800px;
+
+height: 25px;
+left-margin:10px;
+
+padding-left: 5px;
+
+display: block;
+
+background: #dedede;
+
+border-bottom:solid thin #6496db;
+
+border-left: thick solid #6496db;
+
+border-right: thick solid #6496db;
+
+
+}
+
+
+x2 {font-family: arial, helvetica, sans-serif;
+
+color: white;
+
+font-size: 10pt;
+
+text-decoration:none;
+
+text-align:center;
+
+width: 815px;
+height: 25px;
+display: block;
+
+background: #6496db;
+
+border-bottom:solid thin #6496db;
+
+}
+
+
+x3 {
+font-family: arial, helvetica, sans-serif;
+
+color: #444444;
+
+font-size: 12pt;
+
+font-style: italic;
+
+text-align:left;
+
+width: 785px;
+left-margin:10px;
+
+padding-left: 10px;
+
+padding-right: 10px;
+display: block;
+
+background: #ffffff;
+
+border-bottom:solid thin #6496db;
+
+border-left: thick solid #6496db;
+
+border-right: thick solid #6496db;
+
+
+}
+
+
+</style>
+
+    <script type="text/javascript">  
+	//
+	// revised: 11/13/2014
+	//
+	var k=1;
+	flag = -1
+	flag1=-1;
+	flag2= 1;
+	//
+	var flag_job = -1;
+	var flag_misc = -1;
+	var flag_concert = -1;
+	var flag_payroll = -1;
+	var flag_interview = 0;
+	var flag_health = -1;
+	var flag_done = 1;
+	var preference_toggle = -1;
+	var pay_toggle = -1;
+	var expense_toggle = -1;
+	var move_toggle = -1;
+	var job_toggle = 1;
+	var price_toggle = -1;
+	var test = 0.0;
+	//
+	var fit = 0.0;
+	var sit = 0.0;
+	var fica = 0.0;
+	var medicare = 0.0;
+	var taxable = 0.0;
+	//
+	var wage = 10.75;
+	var hours = 20;
+	//
+	var gross = wage * hours;
+	var net = 0.0;
+	var deductions = 0.0;
+	//
+	var ppy = -1;
+	var temp = 0;
+	var myVar = "";
+	var ans1 = "yes";
+	var ans2 = "no";
+	var ans3 = "entrepreneur";
+	var ans4 = "stay put";
+	var ans5 = "startup";
+	var job = "barista";
+	var step = 0;
+	var weeks = 0;
+	var weeks_offset = 0;
+	var age = 23;
+	var low = 0;
+	var checking = 1420;
+	var exp_total= 0;
+	//
+	var health_ins = 0.00;
+	var em_room = 0;
+	var deposit = 0;
+	var day = ["S","M","T","W","T","F","S"];
+	var txt1 = "";
+	var txt2 = "";
+	var txt3 = "";
+//
+var rent = [0,0,0,525,0,
+0,0,525,0,
+0,0,525,0,
+0,0,525,0,
+0,0,525,0,
+0,0,525,0,
+0,0,525,0,
+0,0,525,0,
+0,0,525,0,
+0,0,525,0,
+0,0,525,0,
+0,0,525,0];
+//
+var auto_ins = [0,0,0,0,0,
+0,0,0,0,
+0,300,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,0,0,0,
+0,300,0,0,
+0,0,0,0];
+//
+var misc = [0,75,25,50,
+25,75,25,25,
+25,75,25,25,
+25,75,25,25,
+25,75,25,25,
+25,75,25,25,
+25,75,25,25,
+25,75,25,25,
+25,75,25,25,
+25,75,25,25,
+25,75,25,25,
+25,75,25,25,
+25,75,25,25
+];
+//
+var groc = [0,100,100,50,
+100,50,100,50,
+100,50,100,50,
+100,50,100,50,
+100,50,100,50,
+100,50,100,50,
+100,50,100,50,
+100,50,100,50,
+100,50,100,50,
+100,50,100,50,
+100,50,100,50,
+100,50,100,50,
+100,50,100,50,
+];
+//
+var gas = [0,60,0,0,
+0,60,0,0,
+0,60,0,0,
+0,60,0,0,
+0,60,0,0,
+0,60,0,0,
+0,60,0,0,
+0,60,0,0,
+0,60,0,0,
+0,60,0,0,
+0,60,0,0,
+0,60,0,0,
+0,60,0,0,
+];
+//
+var cellp = [0,0,0,82.00,0,
+0,0,82.00,0,
+0,0,82.00,0,
+0,0,82.00,0,
+0,0,82.00,0,
+0,0,82.00,0,
+0,0,82.00,0,
+0,0,82.00,0,
+0,0,82.00,0,
+0,0,82.00,0,
+0,0,82.00,0,
+0,0,82.00,0];
+//
+// disable enter
+//
+function TriggeredKey(evt) {
+ var evt = (evt) ? evt : ((event) ? event : null);
+  var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+  if ((evt.keyCode == 13) && (node.type=="text"))  {return false;}
+} 
+document.onkeypress = TriggeredKey; 
+//
+// start
+//
+function start() {
+  if (step ==0) {
+    document.getElementById('sim').style.display = "none";
+   document.getElementById('sim2').style.display = "none";
+  }
+  draw();
+  }
+//
+// dashboard
+//
+// housing parameters
+//
+var housing = 0;
+var affordability = 3;
+var space = 1;
+var locate = 2;
+var alpha = 1;
+var beta = 1;
+var gamma = 1;
+//
+// risk aversion parameters
+//
+var risk = 0;
+var delta = 1;
+//
+// work-life parameters
+//
+var pay = 1;
+var culture = 2;
+var leisure = 3;
+var epsilon = 1;
+var theta = 1;
+var omega = 1;
+var work = 0;
+//
+// intertemporal saving parameters
+//
+var save = 0;
+var present = 1;
+var future = 1;
+var lambda = 1;
+var rho = 1;
+//
+var util =0;
+//
+var likert = ["","strongly disagree","disagree","neutral","agree","strongly agree"];
+var q = [3,3,3,3,3,3,3,3,3,3,3,3];
+var state = ["agree","agree","agree","agree","agree","agree","agree","agree","agree","agree"];
+var preference = ["Location","Affordability","Space",
+"Risk Aversion",
+"Pay","Culture","Leisure",
+"Savings","Disposable"];
+//
+function utility(a,b,c,d,e,f,g,h,j) {
+//
+alpha = (a*1)/(a*1 + b*1 + c*1);
+beta = (b*1)/(a*1 + b*1 + c*1);
+gamma = (c*1)/(a*1 + b*1 + c*1);
+housing = 50*Math.pow(locate,alpha)*Math.pow(affordability,beta)*Math.pow(space,gamma);
+//
+delta = d;
+//
+epsilon = (e*1)/(e*1 + f*1 + g*1);
+theta = (f*1)/(e*1 + f*1 + g*1);
+omega = (g*1)/(e*1 + f*1 + h*1);
+work = 50*Math.pow(pay,epsilon)*Math.pow(culture,theta)*Math.pow(leisure,omega);
+//
+lambda = (h*1)/(h*1 + j*1);
+rho = (j*1)/(h*1 + j*1);
+save = 50*Math.pow(present,lambda)*Math.pow(future,rho);
+//
+   document.getElementById('choose').style.display = "none";
+   document.getElementById('sim').style.display = "block";
+   document.getElementById('sim2').style.display = "block";
+draw();
+}
+//
+// actions and responses
+//
+function do1(ans) {
+    //
+    if (weeks ==4 && ans == ans1) {
+      hours = 30;
+      pay = 2;
+      leisure = 2;
+      culture = 2;
+     work = 50*Math.pow(pay,epsilon)*Math.pow(culture,theta)*Math.pow(leisure,omega);
+    }
+    if (weeks ==4 && ans ==ans2) {
+      hours = 20;
+       pay = 1;
+       leisure = 3;
+       culture = 2;
+      work = 50*Math.pow(pay,epsilon)*Math.pow(culture,theta)*Math.pow(leisure,omega);
+   }
+   //
+   // need to update weeks reference
+   //
+   if (weeks ==10 && ans == ans1) {
+     health_ins = 75;
+     flag_health = 1;
+     risk = 150 -delta*50;
+   }
+   if (weeks ==10 && ans == ans2) {
+     health_ins = 0;
+     flag_health = -1;
+     risk = -150 + delta*50;
+   }
+   if (weeks == 13 && ans == ans3) {
+     hours = 40;
+     // note: $3,000 / 173.3 = $17.31, $3,000 / 160 = $18.75
+     wage = 18.75;
+     job = ans3;
+     pay = 2;
+       leisure = 1;
+       culture = 3;
+      work = 50*Math.pow(pay,epsilon)*Math.pow(culture,theta)*Math.pow(leisure,omega);
+   } 
+   if (weeks == 13 && ans == ans4 || weeks ==13 && ans == "") {
+     hours = 30;
+     // 
+     wage = 10.75;
+     job = ans4;
+     pay = 1;
+      leisure = 2;
+      culture = 2;
+     work = 50*Math.pow(pay,epsilon)*Math.pow(culture,theta)*Math.pow(leisure,omega);
+   } 
+   if (weeks == 13 && ans == ans5) {
+     hours = 40;
+    // note: $5,000 / 173.3 = 28.85, $5,000 / 160.0 = $31.25
+     wage = 28.85;
+     job = ans5;
+      pay = 3;
+       leisure = 1;
+       culture = 2;
+      work = 50*Math.pow(pay,epsilon)*Math.pow(culture,theta)*Math.pow(leisure,omega);
+   }
+   if (weeks == 15 && ans == ans1) {
+     deposit = 600;
+     locate = 2;
+     space = 2;
+     affordability = 3;
+     housing = 50*Math.pow(locate,alpha)*Math.pow(affordability,beta)*Math.pow(space,gamma);
+     move_toggle = 1;
+     // zero out expenses going forward
+     for (i=weeks;i<53;i=i+1) {
+       rent[i] = 0;
+       gas[i-1] = 0;
+       misc[i] = 0;
+    }
+    // update values for a move
+    for (i=weeks;i<56;i=i+4) {
+       rent[i] = 800;
+       gas[i-1] = 60;
+       gas[i-3] = 60;
+       misc[i-3] = 50;
+       misc[i-2] = 75;
+       misc[i-1] = 100;
+       misc[i] = 75;
+     }
+  }
+  //
+  if (weeks == 17 && ans == ans1) {
+    flag_concert = 1;
+  }
+  if (weeks == 20 && ans == ans1) {
+     price_toggle = 1;
+  }
+  //
+  if (weeks == 21 && ans == ans1) {
+     hours = 40;
+     // note $4,500 / 173.3 = 25.96, $4,500 / 160 = $28.13
+     wage = 25.96;
+     job = "publisher";
+     job_toggle = 1;
+     pay = 2;
+     leisure = 2;
+     culture = 3;
+      work = 50*Math.pow(pay,epsilon)*Math.pow(culture,theta)*Math.pow(leisure,omega);
+   }
+  //
+  if (weeks == 30) {
+    age = age + 1;
+  }
+  //
+}
+//
+// pay stub ===================================================
+//
+function do2() {
+  pay_toggle = pay_toggle*(-1);
+  expense_toggle = -1;
+  draw();
+}
+//
+// expense summary ===========================================
+//
+function do3() {
+  expense_toggle = expense_toggle*(-1);
+  pay_toggle = -1;
+  draw();
+}
+//
+// welfare summary ===========================================
+//
+function do4() {
+  preference_toggle = preference_toggle*(-1);
+  pay_toggle = -1;
+  expense_toggle = -1;
+  draw();
+}
+//
+// update weeks and pay
+//
+function doSomething() {
+  		k = 0;
+ 		 flag = 1;
+ 		 step = step + 1;
+  		if (step >=10) {
+		  weeks = weeks+1;
+		}
+		if (job_toggle < 0) {
+		   hours = 0;
+		}
+ 		//
+		// 151.90
+		// $87 - $436,  $0.00 plus 10% over $87
+		// $436 - $1,506, $34.90 plus 15% over $436
+		// $1,506 - $3,523, $195.40 plus 25% over $1,506
+		// $3,523 - $7,254, $699.65 plus 28% over $3,523
+		//
+ 		 if (weeks > 0 && Math.pow(-1,weeks)>0) {
+		   //
+		   gross = wage * hours*2;
+		   fica = gross *0.062;
+		   medicare = gross *0.0145;
+		   // exemption :  biweekly
+		   taxable = gross -151.90;
+		   if (taxable > 0) {
+		   sit = (taxable)*0.05;
+		  }
+		   if (taxable < 87) {
+		      fit = 0.0;
+		   }
+		   if (taxable >=87 && taxable < 436) {
+		     fit = 0.10*(taxable - 87);
+		   }
+		   if (taxable >=436 && taxable < 1506) {
+		     fit = 34.90 + 0.15*(taxable - 436);
+		   }
+		   if (taxable >= 1506 && taxable <3523) {
+		     fit = 195.40 + 0.25*(taxable - 1506);
+		   }
+		   if (taxable >= 3523 && taxable < 7254) {
+		     fit = 699.65 + 0.28*(taxable - 3523);
+		   }
+		   deductions = fit + sit + fica + medicare;
+		   net = gross - deductions;
+		   //
+		   checking = checking + net;
+		}
+		//
+		if (weeks == 14) {
+ 		  if (flag_health > 0) {
+		    em_room = 35.00;
+		  }
+		  if (flag_health < 0) {
+		    em_room = 400.00;
+		 }
+		}
+		else {
+		  em_room = 0.00;
+		}
+		//
+		if (weeks != 16) {
+		   deposit = 0.00;
+		}
+		//
+		exp_total = rent[weeks] + cellp[weeks]+(misc[weeks])+groc[weeks]+gas[weeks]+auto_ins[weeks]+health_ins +em_room+deposit;
+		checking = checking  - (exp_total);
+		//
+		if (step > 52) {
+		  step = 0;
+		}
+		x2 = 0
+    	myVar=setInterval(function(){update()},50);
+    	function update() {
+    	  x2=x2+1;
+      	  if (x2 < 80) {
+	    // draw();
+      	  }
+    	}
+    	function myStopFunction() {
+	      clearInterval(myVar);
+    	}
+	draw();
+}
+//
+function photo() {
+  //
+  // set things up
+  //
+  var canvas = document.getElementById('Life2');
+  if (canvas.getContext){  
+                  var gS2 = canvas.getContext('2d');  
+   }  
+  //
+  // screenshot -- avatar
+  //
+ var avatar = new Image();
+ avatar.onload = function() {
+    gS2.drawImage(avatar,240,50,80,90);
+ }
+  if (weeks < 52) {
+    avatar.src = "avatar2.png";
+  }
+  if (step == 1) {
+    avatar.src = "avatar_grad.png";
+  }
+  if (step == 7 || step ==10) {
+    avatar.src = "avatar_maniac.png";
+  }
+  if (step ==9 || checking < 200) {
+    avatar.src = "avatar_sad.png";
+  }
+   if (step  ==4 || step == 6 || step == 8) {
+    avatar.src = "avatar_ambivalent.png";
+  }
+  if (weeks == 1) {
+    avatar.src = "avatar_grad.png";
+  }
+  if (weeks >=8 && weeks <=11) {
+    avatar.src = "avatar_ambivalent.png";
+  }
+  //
+  // places
+  //
+  var places = new Image();
+  places.onload = function() {
+    gS2.drawImage(places,600,65,190,150);
+  }
+  //
+  if (step > 9) {
+    if (weeks ==0) {
+      places.src = "cu1.png";
+    }
+    if (weeks ==1) {
+      places.src = "sf4.png";
+    }
+     if (weeks == 2) {
+      places.src = "sf4.png";
+    }
+    if (weeks >= 3 && weeks < 5) {
+      places.src = "work1.png";
+    }
+    if (weeks >= 5 && weeks < 7) {
+      places.src = "sf1.png";
+    }
+    if (weeks >= 7 && weeks < 10) {
+      places.src = "startup.png";
+    }
+     if (weeks >= 10 && weeks < 13) {
+      places.src = "sf2.png";
+    }
+    if (weeks >= 13 && weeks < 16) {
+      places.src = "apartment1.png";
+    }
+    if (weeks >= 16 && weeks < 18) {
+      places.src = "apartment2.png";
+    }
+   if (weeks == 16 || weeks == 21) {
+     places.src = "publisher.png";
+   }
+  }
+}
+//
+function drawLine(x1,y1,x2,y2) {
+  var canvas = document.getElementById('Life2');  
+        	if (canvas.getContext){  
+                  var gS2 = canvas.getContext('2d');  
+            	}  
+	gS2.beginPath();  
+	gS2.moveTo(x1,y1);
+	gS2.lineTo(x2,y2);
+	gS2.closePath;
+  	gS2.stroke();  
+}
+//
+function popup(txt1,txt2,txt3) {
+  var canvas = document.getElementById('Life2');  
+  if (canvas.getContext){  
+                  var gS2 = canvas.getContext('2d');  
+            	}  
+	gS2.font = "italic 14px Calibri";
+	gS2.fillStyle = "rgb(128,0,0)";
+	gS2.fillText(""+txt1,360,250);
+	gS2.fillText(""+txt2,360,270);
+	gS2.fillText(""+txt3,360,290);
+}
+//
+function draw() {  
+            	var canvas = document.getElementById('Life2');  
+	//
+            	if (canvas.getContext){  
+               	    var gS2 = canvas.getContext('2d');  
+            	}  
+		//
+		util = work + housing + risk;
+		//
+		gS2.fillStyle = "rgb(255,255,255)";
+		gS2.fillRect(0,0,800,400);
+		//
+		// gS2.fillStyle = "rgb(224,224,224)";
+		gS2.fillStyle = "rgb(255,255,255)";
+		gS2.fillRect(0,0,800,400);
+		//
+		gS2.fillStyle = "rgb(255,255,255)";
+		gS2.fillRect(2,21,348,377);
+		gS2.fillRect(352,21,446,377);
+		// 
+		gS2.fillStyle = "rgb(224,224,224)";
+		gS2.fillRect(0,0,800,20);
+		gS2.strokeStyle = "rgb(164,164,164)";
+		gS2.lineWidth=1;
+		drawLine(0,21,800,21);
+		//
+		gS2.font = "bold 14px Calibri";
+		gS2.fillStyle = "rgb(128,0,0)";
+		var temp = Math.round(util*10)/10;
+		util = temp;
+		gS2.fillText("An Economic Life (deja-vu!) : Utility = "+util, 300 , 15);
+		//
+		gS2.fillStyle = "rgb(64,64,64)";
+		if (step == 0) {
+		  gS2.font = "bold 12px Calibri";
+		  gS2.fillText("Click 'Next' to begin...",530,390);
+		}
+		if (step > 0) {
+		  gS2.font = "bold 12px Calibri";
+		  gS2.fillText("Click 'Next' to continue...",530,390);
+		}
+		//
+		// Dashboard
+		//
+		gS2.fillStyle = "rgb(240,240,240)";
+		gS2.fillStyle = "rgb(255,255,255)";
+		gS2.fillRect(4,22,344,374);
+		gS2.fillStyle = "rgb(0,0,0)";
+		for (i=20;i<395;i=i+20) {
+		  // gS2.strokeStyle = "rgb(255,255,255)";
+		  gS2.strokeStyle = "rgba(62,90,181,0.2)";
+		  gS2.lineWidth=1;
+		  drawLine(3,i,348,i);
+		}
+		//
+		for (i=20;i<350;i=i+20) {
+		  gS2.strokeStyle = "rgb(255,255,255)";
+		  gS2.strokeStyle = "rgba(62,90,181,0.2)";
+		  gS2.lineWidth=1;
+		  drawLine(i,22,i,396);
+		}
+		gS2.fillStyle = "rgb(240,240,240)";
+		gS2.fillRect(240,50,80,90);
+		photo();
+		//
+		if (weeks > 0) {
+		  gS2.fillStyle = "rgb(128,0,0)";
+		  gS2.font = "italic 18px Calibri";
+		  gS2.fillText("Week: "+weeks,30,40);
+		  gS2.fillText("This is your life! "+job,370,40);
+		  if (weeks ==1) {
+		    gS2.fillStyle = "rgb(0,0,0)";
+		    gS2.font = "italic 14px Calibri";
+		    gS2.fillText("Just Graduated from College",100,39);
+		  }
+		}
+		//
+		if (step >=1) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  gS2.fillText("You have just graduated from college with a fine arts degree.",370,65);
+		  gS2.fillText("You are 23 years old. Single. No significant other. Living 1,000 miles.",370,90);
+		  gS2.fillText("from your home town.",370,105);
+		  //
+		  gS2.fillStyle = "rgb(128,0,0)";
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillText("Age:",30,60);
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "14px Calibri";
+		  gS2.fillText(age+" years old",60,60);
+		  //
+		  gS2.fillStyle = "rgb(128,0,0)";
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillText("Status: ",30,80);
+		  gS2.fillText("Savings: $",30,100);
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "14px Calibri";
+		  gS2.fillText("single",80,80);
+		  gS2.fillText(""+0,100,100);
+		}
+		//
+		if (step >=3) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  gS2.fillText("You have $"+checking+" in your checking account (most of it, a graduation gift) no",370,160);
+		  gS2.fillText("savings and $"+rent[3]+" in rent due in 16 days. You are renting month-to-month.",370,175);
+		  //
+		  if (step < 10) {
+		    gS2.fillStyle = "rgb(0,0,128)";
+		    gS2.font = "bold 14px Calibri";
+		    gS2.fillText("Checking:",30,160);
+		    gS2.fillStyle="rgb(225,225,225)";
+		    gS2.fillRect(100,150,220,10);
+		    //
+		    gS2.fillStyle = "rgb(0,0,128)";
+		    gS2.font = "10px Arial";
+		    for (i=4;i<21;i=i+4) {
+		       gS2.fillText(""+i+"00",90+10*i,170);
+		    }
+		    //
+		    gS2.fillStyle = "rgba(0,0,128,0.7)";
+		    for (i=0;i<Math.round(checking/100);i++) {
+		      gS2.fillRect(100+i*10,150,9,10);
+		    }
+		    gS2.fillStyle = "rgb(0,0,128)";
+		    gS2.font = "14px Calibri";
+		    gS2.fillText("$"+checking,105+(checking/100)*10,160);
+		  }
+		  //
+		  gS2.fillStyle = "rgb(225,0,0)";
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillText("Expenses (bills)",40,220);
+		  gS2.lineWidth = 1;
+		  gS2.strokeStyle = "rgb(0,0,0)";
+		  drawLine(40,225,320,225);
+		  gS2.font = "14px Calibri";
+		  gS2.fillText("Rent",50,240);
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  var width = gS2.measureText("$"+rent[weeks]).width;
+		  gS2.fillText("$"+rent[weeks],300-width,240);
+		}
+		//
+		if (step >=2) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  gS2.fillText("You are working part time as a barista putting in "+hours+" hours per week",370,125);
+		  gS2.fillText("earning $10.75 per hour (931.50 per month). You are paid biweekly.",370,140);
+		  //
+		  gS2.fillStyle = "rgb(0,128,128)";
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillText("Earnings:",30,120);
+		  var earnings = wage*hours;
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "14px Calibri";
+		  temp = wage*(hours/40)*173.3;
+		  var salary = Math.round(temp*100)/100;
+		  gS2.fillText("$"+earnings+" (@ "+hours+" hrs./week)", 95,120);
+		  gS2.fillText("$"+salary+" per month",95,140);
+		}
+		if (step >=4) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillText("Your health insurance terminates in 3 months.",380,195);
+		  //
+		  gS2.fillStyle = "rgb(225,0,0)";
+		  gS2.font = "14px Calibri";
+		  gS2.fillText("Health Insurance ",50,260);
+		  gS2.font = "12px Arial";
+		  gS2.fillStyle ="rgb(0,0,0)";
+		  var width = gS2.measureText("$"+health_ins).width;
+		  gS2.fillText("$"+health_ins,300-width,260);
+		}
+		if (step >=5) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  gS2.fillText("You own a used-car, paid off,  with 85,000 miles on it. It is in (blue-book)",370,215);
+		  gS2.fillText("good condition. Insurance premium is $300 semi-annually due in Sept.",370,230); 
+		  gS2.fillText("Half a tank of gas that will last you ‘till the end of the month.",370,245);
+		  gS2.fillStyle = "rgb(225,0,0)";
+		  gS2.font = "12px Arial";
+		  gS2.fillText("Auto Insurance:",50,280);
+   		  if (auto_ins[weeks] != 0) {
+		    gS2.font = "bold 12px Arial";
+		  }
+		  else {
+		    gS2.font = "12px Arial";
+		  }
+		  gS2.fillStyle ="rgb(0,0,0)";
+		  var width = gS2.measureText("$"+auto_ins[weeks]).width;
+		  gS2.fillText("$"+auto_ins[weeks],300-width,280);
+		  //
+		  gS2.fillStyle = "rgb(225,0,0)";
+		  gS2.fillText("Gas ",50,300);
+		  gS2.font = "12px Arial";
+		  gS2.fillStyle ="rgb(0,0,0)";
+		  var width = gS2.measureText("$"+gas[weeks]).width;
+		  gS2.fillText("$"+gas[weeks],300-width,300);
+		}
+		if (step >=6) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillText("You just received your cell-phone bill (voice/data/text) for $82.00",380,265);
+		  gS2.fillText("due by the end of the month.",380,280);
+		  //
+		  gS2.fillStyle = "rgb(225,0,0)";
+		  gS2.font = "14px Calibri";
+		  gS2.fillText("Cell phone",50,320);
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "14px Calibri";
+		  temp = Math.round(cellp[weeks]*100)/100;
+		  cellp[weeks] = temp;
+		  var width = gS2.measureText("$"+cellp[weeks]).width;
+		  gS2.fillText("$"+cellp[weeks],300-width,320);
+		}
+		if (step >=7) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  gS2.fillText("You own a Trek mountain bike, in very good condition and ride it roughly",370,300);
+		  gS2.fillText("40 miles a week: school, work, fun.",370,315);
+		  gS2.fillStyle = "rgb(225,0,0)";
+		  gS2.font = "14px Calibri";
+		  gS2.fillText("Misc.",50,340);
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "14px Calibri";
+		  var width = gS2.measureText("$"+misc[weeks]).width;
+		  gS2.fillText("$"+misc[weeks],300-width,340);
+		}
+		if (step >=8) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  gS2.fillText("You have been looking for a full-time job and have sent out a half-dozen or",370,335);
+		  gS2.fillText("so resumes. So far, no responses.",370,350);
+		}
+		if (step >=9) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillText("You need to buy groceries.",380,370);
+		  gS2.fillStyle = "rgb(225,0,0)";
+		  gS2.font = "14px Calibri";
+		  gS2.fillText("Groceries ",50,360);
+		  gS2.font = "14px Calibri";
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  var width = gS2.measureText("$"+groc[weeks]).width;
+		  gS2.fillText("$"+groc[weeks],300-width,360);
+		}
+		//
+		// =======================================================================
+		// life starts here !
+		// =======================================================================
+		//
+		if (step>9) {
+		  gS2.fillStyle = "rgb(255,255,255)";
+		  gS2.fillRect(350,42,449,398);
+		}
+		//
+		// life events
+		//
+		// low balance warning -- 4 occurrences -- game over!
+		//
+		if (checking < 250) {
+		  gS2.fillStyle = "rgb(0,0,128)";
+		  gS2.font = "italic 14px Calibri";
+		  gS2.fillText("* Your checking account balance is very low! Do you want to cut",360,320);
+		  gS2.fillText("back on your miscellaneous expenses (clothing, movies, eating out...)?",360,340);
+		  gS2.fillText("yes = a $25 weekly reduction / $100 per month.",360,360);
+		  // popup(txt1,txt2,txt3);
+		  low = low + 1;
+		}
+		//
+		// high checking balance -- start saving?
+		if (checking > 2000) {
+		  gS2.fillStyle = "rgb(0,0,128)";
+		  gS2.font = "italic 14px Calibri";
+		  gS2.fillText("Do you want to start saving?",360,320);
+		  gS2.fillText("$100, $200, $300 per month?",360,340);
+		  gS2.fillText("",360,360);
+		}
+		//
+		//  weekly events
+		//
+		if (weeks == 1) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  txt1 = "You have just graduated and continue to live in the Bay region. Over";
+		  txt2 = "the next 52 weeks, life will present many decisions, options and choices.";
+		  txt3 = "Remember, these choices all have an opportunity cost.";
+		  popup(txt1,txt2,txt3);
+		}
+		//
+		if (weeks == 2) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  txt1 = "Opportunity cost: the next best use of a resource. Examples include:";
+		  txt2 = "working fewer hours to free up more time to look for work. Choosing";
+		  txt3 = "one job over another or to buy insurance rather than go to a movie. ";
+		  popup(txt1,txt2,txt3);
+		}
+		//
+		if (weeks == 3) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "bold 14px Calibri";
+		  txt1 = "           Keep an eye out for these life choices and options.";
+		  txt2 = "           Such as...";
+		  txt3 = "";
+		  popup(txt1,txt2,txt3);
+		}
+		//
+		// at week 4, increase work hours at coffee shop? *decision here *
+		// consequence: less time to look for full-time job
+		//
+		if (weeks == 4) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  txt1 = "Your employer has asked you if you want to increase your hours";
+		  txt2 = "to roughly 30 hours per week now that you have graduated.";
+		  txt3 = "However, you will have less time to look for another job: yes / no ?";
+		  popup(txt1,txt2,txt3);
+		}
+		//
+		if (weeks == 5) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  if (hours < 25) {
+		    txt1 = "You choose to continue working 20 hours per week.";
+		    txt2 = "This works out to $931.50 per month.";
+		    txt3 = "";
+		    popup(txt1,txt2,txt3);
+		  }
+		   if (hours >25) {
+		    txt1 = "You are now working 30 hours per week. You will have less";
+		    txt2 = "time for other things (job search, free-time,...). This works .";
+		    txt3 = "out to roughly $1,397.23 per month. A raise would be nice.";
+		    popup(txt1,txt2,txt3);
+		  }
+		}
+		//
+		// job interview at startup -- full time
+		//
+		if (weeks == 6) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  txt1 = "You have a job interview later this week  as a graphics designer at";
+		  txt2 = "a small social networking startup.";
+		  txt3 = "";
+		  popup(txt1,txt2,txt3);
+		}
+		//
+		// interview outcome
+		// 
+		if (weeks ==8) {
+		  test = Math.random();
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  if(hours < 30) {
+		    txt1 = "Job interview went well. You think.";
+		    txt2 = "You should hear back in next week.";	
+		    txt3 = "";
+		    flag_interview =1;
+		    popup(txt1,txt2,txt3);
+		  }
+		  if(hours > 25 &&  test > 0.5) {
+		    txt1 = "Job interview went well. You think.";
+		    txt2 = "You should hear back in the next week or so.";	
+		    txt3 = "";
+		  flag_interview =1;
+		   popup(txt1,txt2,txt3);
+		  }
+		  if(hours > 25 && test < 0.5) {
+		    txt1 = "Unfortunately, you couldn't get off work. Couldn't make the interview.";
+		    txt2 = "Maybe next time.";	
+		    txt3 = "";
+		    flag_interview =0;
+		   popup(txt1,txt2,txt3);
+		  }
+		}
+		//
+		// health insurance -- you won't need it if you get the startup job *decision here *
+		//
+		if (weeks == 10) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  txt1 = "Your university health insurance just expired. Private insurance";
+		  txt2 = "premuims run roughly $300 per month ($75 each week). Do you ";
+		  txt3 = "want to buy from a private plan?";
+		  popup(txt1, txt2, txt3);
+		}
+		//
+		// job option as an entrepreneur
+		//
+		if (weeks == 11) {
+		  txt1 = "Your roomate wants to open an business -- a tea and coffee outlet comes to";
+		  txt2 = "mind. She supplies the capital and 30 hrs of work per week. You provide";
+		  txt3 = "experience and will work full-time. Weekly salary: $750 + 40% of the profits";
+		  popup(txt1,txt2,txt3);
+		}
+		//
+		// what about the startup?
+		//
+		if (weeks == 12) {
+		  var test = Math.random();
+		  if (flag_interview < 0) {
+		     txt1 = "";
+		     txt2 = "";
+		     txt3 = "";
+		  }
+		  if (test > 0.4 && flag_interview == 1) {
+		    txt1 = "You got the job at the startup!. Starting salary is $60,000 per year, ";
+		    txt2 = " or $5,000 per month. Something to consider.";
+		    txt3 = "";
+		    flag_job = 1;
+		  }
+		  if(test <=0.4 && flag_interview == 1) {
+		    txt1 = "You didn't get the startup job. Sorry.";
+		    txt2 = "";
+		    txt3 = "";
+		    flag_job = -1;
+		  }
+		  popup(txt1,txt2,txt3);
+		}
+		//
+		// job choice *decision here *
+		//
+		if (weeks == 13) {
+		  if (flag_job > 0) {
+		    txt1 = "You need to make up your mind. Work for the startup? Join your";
+		    txt2 = "roomate and become an entrepreneur. Stay where you are working";
+		    txt3 = "part-time. So? 'startup', 'entrepreneur', 'stay put'.";
+		  }
+		  else {
+		    txt1 = "You need to make up your mind. Join your roomate and become";
+		    txt2 = "an entrepreneur or stay where you are working part-time.";
+		    txt3 = "So? 'entrepreneur' or 'stay put'.";
+		  }
+		  popup(txt1,txt2,txt3);
+		}
+		//
+		// bike accident -- do you have insurance?
+		//
+		if (weeks == 14) {
+		  var test = Math.random();
+		  if (test> 0.6) {
+		    txt1 = "Just crashed your bike. Mild concussion -- nothing permanent";
+		    if (flag_health > 0) {
+		      txt2 = "Emergency room charges = $400, covered by your insurance.";
+		      txt3 = "Less the deductable. No problem.";
+		      popup(txt1,txt2,txt3);
+		    }
+		    if (flag_health < 0) {
+		      txt2 = "Emergency room charges = $400 -- need to pay our of pocket.";
+		      txt3 = "Bad news. Bad news. Problem!";
+		      popup(txt1,txt2,txt3);
+		    }
+		    //
+		    gS2.font = "bold 14px Calibri";
+		    gS2.fillStyle = "rgb(0,0,0)";
+		    gS2.fillText("(+ER: $"+em_room+")",180,340);
+		  }
+		  if (test <=0.6 ) {
+		    txt1 = "";
+		    txt2 = "";
+		    txt3 = "";
+		  popup(txt1,txt2,txt3);
+		  }
+		}
+		//
+		// move? live alone = privacy but more expensive
+		// don't move -- sign new 6 month lease rent $600 mo *decision here *
+		//
+		if (weeks == 15) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  txt1 = "Thinking about moving? This is an opportunity to get your own";
+		  txt2 = "place. [Yes -- Required Deposit = $600, Monthly Rent = $800]";
+		  txt3 = "No more roomates. Do you want to move? yes / no";
+		  popup(txt1,txt2,txt3);
+		}
+		//
+		if (weeks == 16 && deposit > 0.00) {
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.fillText("(+Deposit: $"+deposit+")",120,240);
+		}
+		//
+		// another job option -- publisher
+		//
+		if (weeks == 16 && job != "startup") {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  txt1 = "You have a job interview later this week  as an artist for";
+		  txt2 = "a children's book publisher.";
+		  txt3 = "";
+		  popup(txt1,txt2,txt3);
+		  //
+		}
+		//
+		// concert invitation
+		//
+		if (weeks == 17 && hours == 40) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  txt1 = "Your friend just called inviting you a Linkin Park Concert";
+		  txt2 ="Given that you are now working full time, this means that";
+		  txt3 ="you will miss a day of work. Call in sick? yes / no?";
+		  popup(txt1,txt2,txt3);
+		}
+		// attend a concert *decision point *
+		if (weeks == 17 && hours < 40) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  txt1 = "Your friend just called inviting you a Link'in Park Concert";
+		  txt2 ="Working as a barista gives you time to go without missing";
+		  txt3 ="work. Do you want to go? yes / no?";
+		  popup(txt1,txt2,txt3);
+		}
+		//
+		 // did I get fired?
+		 //
+		if (weeks == 19 && hours == 40 && flag_concert >0) {
+		  var test = Math.random();
+		  if (test > 0.7) {
+		    txt1  = "Concert was great and your boss didn't find out.";
+		    txt2 = " You still have your job.";
+		    txt3 = "";
+		     job_toggle = +1;
+		  }
+		  else {
+		    txt1  = "You ran into a coworker at the concert.";
+		    txt2 = " He tattled. Your fired.";
+		    txt3 = "";
+ 		    job_toggle = -1;
+		  }
+		  popup(txt1,txt2,txt3);
+		}
+		//
+		// if you are an entrepreneur -- raise prices?
+		//
+		if (weeks == 20 && job == "entrepreneur") {
+		  txt1 = "You and your business partner are preparing your";
+		  txt2 = "quarterly financials. Profits are flat. Do you want";
+		  txt3 = "raise prices by 5%? yes or no.";
+		  popup(txt1,txt2,txt3);
+		}
+		//
+		// children's book interview outcome
+		// 
+		if (weeks ==21) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  if(hours < 40) {
+		    txt1 = "You were offered the job with the publisher almost";
+		    txt2 = "immediately. Salary = $4,500 / month.";	
+		    txt3 = "Do you want to accept? yes / no.";
+		    popup(txt1,txt2,txt3);
+		  }
+		}
+		 //
+		// outcome of raising prices -- entrepreneur
+		//
+		if (weeks == 23 && job == "entrepreneur" && price_toggle > 0) {
+		  var elasticity = Math.round((Math.random()+0.5)*100);
+		  var quantity_chg = elasticity*(0.05);
+		  if (elasticity >= 1.0) {
+		    txt1 = "You find that profits have begun to decline. Sales have";
+		    txt2 = "fallen by "+quantity_chg+"%. Revenue has fallen.";
+		  }
+		  if (elasticity < 1.0) {
+		    txt1 = "You find that profits are increasing. Sales have";
+		    txt2 = "fallen by "+quantity_chg+"% but revenue has increased. ";
+		  }
+		  txt3 = "Remember, two weeks ago, you raised prices by 5%.";
+		  popup(txt1,txt2,txt3);
+		}
+		
+		//
+		if (weeks == 24 && move_toggle < 0) {
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.font = "italic 14px Calibri";
+		  txt1 = "Thinking about moving? This is an opportunity to get your own";
+		  txt2 = "place. [Yes -- Required Deposit = $1,000, Monthly Rent = $1,200]";
+		  txt3 = "No more roomates. Do you want to move? yes / no";
+		  popup(txt1,txt2,txt3);
+		}
+		//
+		// if job = startup -- what about recession? what about failure?
+		//
+		if (weeks == 27) {
+		  var test = Math.random();
+		  if (test < 0.1) {
+		    gS2.fillStyle = "rgb(0,0,0)";
+		    gS2.font = "italic 14px Calibri";
+		    txt1 = "The social networking bubble has burst. A mild recession";
+		    txt2 = "is affecting your industry and your job. In a nutshell, you";
+		    txt3 = "have lost your job. You will receive 4 weeks severance at 75% pay.";
+		    popup(txt1,txt2,txt3);
+		  }
+		}
+		//
+		// if job = entreprenurship -- what about recession? what about failure? 
+		//
+		// if job = entrepreneurship -- what about raising / lowering prices?
+		//
+		// if job = startup AND opportunity to go to concert -- miss work -- get fired.
+		//
+		// ======================= end of life events ==============================
+		//
+		// earnings / pay calculations
+		//
+		// code was here 
+		//
+		if (step > 9) {
+		  // weeks = weeks +1;
+		  //
+		  gS2.fillStyle = "rgb(0,0,128)";
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillText("Checking:",30,160);
+		  gS2.fillStyle="rgb(225,225,225)";
+		  gS2.fillRect(100,150,220,10);
+		  gS2.fillStyle = "rgb(0,0,128)";
+		  gS2.font = "10px Arial";
+		  for (i=4;i<21;i=i+4) {
+		    gS2.fillText(""+i+"00",90+10*i,170);
+		  }
+		  gS2.fillStyle = "rgb(0,0,128)";
+		  gS2.font = "italic 12px Arial";
+		  temp = Math.round(net*100)/100;
+		  net = temp;
+		 if (weeks > 0 && Math.pow(-1,weeks)>0) {
+		   gS2.fillText("Deposit (checking): $"+net,100,200);
+		 }
+		 //
+		 gS2.fillStyle = "rgba(0,0,128,0.7)";
+		 if (checking <2201) {
+		   for (i=0;i<Math.round(checking/100);i++) {
+		     gS2.fillRect(100+i*10,150,9,10);
+		   }
+		}
+		else {
+		  for (i=0;i<22;i++) {
+		    gS2.fillRect(100+i*10,150,9,10);
+		  }
+		}
+		gS2.fillStyle = "rgb(0,0,128)";
+		gS2.font = "14px Calibri";
+		temp = Math.round(checking*100)/100;
+		checking = temp;
+		gS2.fillText("Account Balance: $"+checking,100,185);
+		//
+		gS2.fillStyle = "rgb(225,0,0)";
+		gS2.font = "bold 14px Calibri";
+		gS2.fillText("Total expenses (paid week "+weeks+")",40,380);
+		// gS2.fillStyle = "rgb(0,0,0)";
+		var width = gS2.measureText("$"+exp_total).width;
+		gS2.fillText("$"+exp_total,300-width,380);
+		gS2.lineWidth = 1;
+		gS2.strokeStyle = "rgb(0,0,0)";
+		// drawLine(40,225,320,225);
+		drawLine(40,365,320,365);
+		//
+		// weeks = weeks+1;
+		weeks_offset = weeks_offset+1;
+		if (weeks_offset > 3) {
+		   weeks_offset = 0;
+		}
+		//
+		// calendar
+		//
+		gS2.fillStyle = "rgb(0,0,0)";
+		gS2.font = "bold 12px Arial";
+		gS2.fillText("Calendar", 450,62);
+		gS2.fillStyle = "rgba(0,0,164,0.6)";
+		gS2.fillRect(368,64,210,20);
+		gS2.fillStyle = "rgb(255,255,255)";
+		gS2.font = "bold 12px Arial";
+		for (i=0;i<7;i++) {
+		  gS2.fillText(""+day[i],375+i*30,78);
+		}
+		var dax = 7+weeks_offset*7;
+		//
+		// where are we on the calendar ?
+		//
+		// gS2.fillStyle = "rgb(225,225,240)";
+ 		// gS2.fillRect(45,37,21,21);
+		//
+		gS2.font = "10px Arial";
+		for (j=1;j<5;j++) {
+		  gS2.fillStyle="rgb(164,164,164)";
+ 		  for (i=0;i<7;i++) {
+	    	     gS2.fillRect(368+i*30,60+j*30,30,30);
+	  	  }
+		  //
+		  gS2.fillStyle="rgb(255,255,255)";
+ 	 	 for (i=0;i<7;i++) {
+	   	    if (i<6 && i>0 && j==1) {
+	      	      gS2.fillStyle = "rgb(225,225,240)";
+		    }
+		    else {
+	  	       gS2.fillStyle="rgb(255,255,255)";
+	  	    }
+	  	    gS2.fillRect(369+i*30,61+j*30,28,28);
+	   	    gS2.fillStyle="rgb(0,0,0)";
+                     	    gS2.fillText(""+dax,370+i*30,68+j*30);
+	    	   dax = dax + 1;
+	    	   if (dax > 28) {
+	      	     dax = 1;
+	    	  }
+	                 }
+	             }
+	            //
+	            // need a flag here -- shut down the simulation
+	            //
+		if (low > 4) {
+		  gS2.fillStyle = "rgb(255,255,255)";
+		  gS2.fillRect(200,160,400,100);	
+		  gS2.fillStyle = "rgba(0,0,128,0.6)";
+		  gS2.fillRect(205,162,390,96);
+		  gS2.fillStyle = "rgb(255,255,255)";
+		  gS2.fillRect(210,165,380,90);
+		  gS2.fillStyle = "rgb(225,0,225)";
+		  gS2.font = "italic 14px Calibri";
+		  var width = gS2.measureText("You've been overdraw on your checking account several").width;
+		  gS2.fillText("You've been overdrawn on your checking account several",400-width/2,190);
+		  var width = gS2.measureText("times. Time to hang it up and move back home and live").width;
+		  gS2.fillText("times. Time to hang it up and move back home and live ",400-width/2,210);
+		  var width = gS2.measureText("in your parents basement. You're done. Bummer!").width;
+		  gS2.fillText("in your parents basement. You're done. Bummer!",400-width/2,230);
+		  flag_done = -1;
+		}
+		//
+		// paystub
+		//
+		if(pay_toggle > 0) {
+		  //
+		  // FIT -- notes
+		  //
+		  // per witholding allowance
+		  //
+		  var weeks2 = weeks -1;
+		  gross = wage * hours*2;
+		  fica = gross *0.062;
+		  medicare = gross *0.0145;
+		  //
+		  taxable = gross -151.90;
+		  if (taxable > 0) {
+		    sit = (taxable)*0.05;
+		   }
+		   if (taxable < 87) {
+		      fit = 0.0;
+		   }
+		   if (taxable >=87 && taxable < 436) {
+		     fit = 0.10*(taxable - 87);
+		   }
+		   if (taxable >=436 && taxable < 1506) {
+		     fit = 34.90 + 0.15*(taxable - 436);
+		   }
+		   if (taxable >= 1506 && taxable < 3523) {
+		     fit = 195.40 + 0.25*(taxable - 1506);
+		   }
+		   if (taxable >= 3523 && taxable < 7254) {
+		     fit = 699.65 + 0.28*(taxable - 3523);
+		   }
+		  //
+		  deductions = fit + sit + fica + medicare;
+		  net = gross - deductions;
+		  //
+		  gS2.fillStyle = "rgb(255,255,255)";
+		  gS2.fillRect(240,140,240,240);	
+		  gS2.fillStyle = "rgba(0,0,128,0.8)";
+		  gS2.fillRect(242,142,236,236);
+		  gS2.fillStyle = "rgb(240,240,240)";
+		  gS2.fillRect(248,144,224,232);
+		  gS2.strokeStyle = "rgb(255,255,255)";
+		  gS2.lineWidth = 1;
+		 for (i=5;i<224;i=i+6) {
+		    drawLine(244+i,144,244+i,375);
+		  }
+		  gS2.fillStyle = "rgb(128,0,0)";
+		  gS2.font = "bold 16px Calibri";
+		  gS2.fillText("PayStub (biweekly):",270,165);
+		  gS2.font = "italic 14px Calibri";
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  var hours2 = hours*2;
+		  gS2.fillText("Hours: "+hours2,280,190);
+		  gS2.fillText("Rate: $"+wage+" per hour",280,210);
+		  //
+		  temp = Math.round(gross*100)/100;
+		  gross = temp;
+		  var width = gS2.measureText("$"+gross).width;
+		  gS2.fillText("Gross pay: ",260,230);
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillText("$"+gross,460-width,230);
+		  //
+		  gS2.font = "italic 14px Calibri";
+		  gS2.fillText("Deductions",270,255);
+		  gS2.strokeStyle = "rgb(0,0,0)";
+		  drawLine(270,260,420,260);
+		  //
+		  temp = Math.round(fit*100)/100;
+		  fit = temp;
+		  var width = gS2.measureText("$"+fit).width;
+	   	  gS2.fillText("Federal: ",290,275);
+		  gS2.fillText("$"+fit,420-width,275);
+		  //
+		  temp = Math.round(sit*100)/100;
+		  sit = temp;
+		  var width = gS2.measureText("$"+sit).width;
+		  gS2.fillText("State: ",290,290);
+		  gS2.fillText("$"+sit,420-width,290);
+		  //
+		  temp = Math.round(fica*100)/100;
+		  fica = temp;
+		  var width = gS2.measureText("$"+fica).width;
+		  gS2.fillText("FICA: ",290,305);
+		  gS2.fillText("$"+fica,420-width,305);
+		  //
+		  temp = Math.round(medicare*100)/100;
+		  medicare = temp;
+		  var width = gS2.measureText("$"+medicare).width;
+		  gS2.fillText("Medicare: ",290,320);
+		  gS2.fillText("$"+medicare,420-width,320);
+		  //
+		  gS2.strokeStyle = "rgb(0,0,0)";
+		  drawLine(270,325,420,325);
+		  temp = Math.round(deductions*100)/100;
+		  deductions = temp;
+		  var width = gS2.measureText("$"+deductions).width;
+		  gS2.fillText("Total: ",270,340);
+		  gS2.fillText("$"+deductions,420-width,340);
+		  //
+		  temp = Math.round(net*100)/100;
+		  net = temp;
+		  var width = gS2.measureText("$"+net).width;
+		  gS2.fillText("Net Pay: ",260,360);
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillText("$"+net,460-width,360);
+		}
+		//
+		// monthly expense summary
+		//
+		if(expense_toggle > 0) {
+		  //
+		  gS2.fillStyle = "rgb(255,255,255)";
+		  gS2.fillRect(240,140,240,240);	
+		  gS2.fillStyle = "rgba(128,0,0,0.8)";
+		  gS2.fillRect(242,142,236,236);
+		  gS2.fillStyle = "rgba(255,255,255,0.9)";
+		  gS2.fillRect(248,144,224,232);
+		  gS2.strokeStyle = "rgb(255,255,255)";
+		  gS2.lineWidth = 1;
+		  for (i=5;i<224;i=i+6) {
+		    drawLine(244+i,144,244+i,375);
+		  }
+		  gS2.fillStyle = "rgb(128,0,0)";
+		  gS2.font = "bold 16px Calibri";
+		  gS2.fillText("Monthly expenses",300,175);
+		  gS2.font = "italic 14px Calibri";
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  //
+		  var rent_temp = 0;
+		  var gas_temp = 0;
+		  var misc_temp = 0;
+	 	  var groc_temp = 0;
+		  var auto_temp = 0;
+		  var cell_temp = 0;
+		  //
+		  for (i = weeks;i<weeks+4;i++) {
+		   rent_temp = rent_temp + rent[i];
+		   gas_temp = gas_temp + gas[i];
+		   groc_temp = groc_temp + groc[i];
+		   misc_temp = misc_temp + misc[i];
+		   cell_temp = cell_temp + cellp[i]
+		  }
+		  //
+		  gS2.strokeStyle = "rgb(0,0,0)";
+		  drawLine(260,205,460,205);
+		  var width = gS2.measureText("$"+rent_temp).width;
+		  gS2.fillText("Rent: ",290,220);
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillText("$"+rent_temp,440-width,220);
+		  //
+		  gS2.font = "italic 14px Calibri";
+		  gS2.fillText("Health Insurance:",290,240);
+		  gS2.font = "bold 14px Calibri";
+		  var width = gS2.measureText("$"+health_ins).width;
+		  gS2.fillText("$"+health_ins,440-width,240);
+		  //
+		  var width = gS2.measureText("$"+auto_ins[weeks]).width;
+		  gS2.font = "italic 14px Calibri";
+	   	  gS2.fillText("Auto Insurance: ",290,260);
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillText("$"+auto_ins[weeks],440-width,260);
+		  //
+		  var width = gS2.measureText("$"+gas_temp).width;
+		  gS2.font = "italic 14px Calibri";
+		  gS2.fillText("Gas: ",290,280);
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillText("$"+gas_temp,440-width,280);
+		  //
+		  var width = gS2.measureText("$"+cell_temp).width;
+		  gS2.font = "italic 14px Calibri";
+		  gS2.fillText("Cell Phone: ",290,300);
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillText("$"+cell_temp,440-width,300);
+		  //
+		  var width = gS2.measureText("$"+misc_temp).width;
+		  gS2.font = "italic 14px Calibri";
+		  gS2.fillText("Miscellaneous: ",290,320);
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillText("$"+misc_temp,440-width,320);
+		  //
+		  var width = gS2.measureText("$"+groc_temp).width;
+		  gS2.font = "italic 14px Calibri";
+		  gS2.fillText("Groceries: ",290,340);
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillText("$"+groc_temp,440-width,340);
+		  //
+		  var exp_temp = 0;
+		  exp_temp = exp_temp + rent_temp+misc_temp+groc_temp+gas_temp+cell_temp+health_ins+auto_ins[weeks];
+		  //
+		  drawLine(260,345,460,345);
+		  var width = gS2.measureText("$"+exp_temp).width;
+		  gS2.fillText("Total: ",260,360);
+		  gS2.font = "bold 14px Calibri";
+		  gS2.fillText("$"+exp_temp,460-width,360);
+		}
+	              } 
+	              if (step > 11) {
+	                // hours = 30;
+	              }
+	              //
+	              if (preference_toggle > 0) {
+                                  //
+		  gS2.fillStyle = "rgb(255,255,255)";
+		  gS2.fillRect(140,100,440,240);	
+		  gS2.fillStyle = "rgba(0,128,0,0.8)";
+		  gS2.fillRect(142,102,436,236);
+		  gS2.fillStyle = "rgb(240,240,240)";
+		  gS2.fillRect(148,104,424,232);
+		  gS2.strokeStyle = "rgb(255,255,255)";
+		  gS2.lineWidth = 1;
+		  for (i=5;i<424;i=i+6) {
+		    drawLine(144+i,104,144+i,335);
+		  }
+		  gS2.fillStyle = "rgb(128,0,0)";
+		  gS2.font = "bold 16px Calibri";
+		  gS2.fillText("Utility - welfare",350,125);
+		  gS2.fillStyle = "rgb(255,255,255)";
+		  gS2.font = "bold 12px Arial";
+		  //
+		  gS2.fillStyle = "rgb(224,224,224)";
+		  //
+		  for (i=0;i<4;i++) {
+		    gS2.fillRect(300,160+i*20,200,15);
+		  }
+		  gS2.strokeStyle = "rgb(0,0,0)";
+		  gS2.beginPath();  
+		  gS2.moveTo(400,178);
+		  gS2.lineTo(400,237);
+		  gS2.closePath;
+  		  gS2.stroke();  
+		  //
+		  var temp = Math.round(housing*10)/10;
+		  housing = temp;
+		  var temp = Math.round(risk*10)/10;
+		  risk = temp;
+		  var temp = Math.round(work*10)/10;
+		  work = temp;
+		  gS2.fillStyle = "rgb(0,0,0)";
+		  gS2.fillText("Neutral",380,158);
+		  gS2.fillText("Housing: ",200,175);
+		  gS2.fillText("Risk Aversion: ",200,195);
+		  gS2.fillText("Work: ",200,215);
+		  gS2.fillText("Savings: ",200,235);
+		  //
+		  gS2.fillText(""+housing,510,175);
+		  gS2.fillText(""+risk,510,195);
+		  gS2.fillText(""+work,510,215);
+		  gS2.fillStyle = "rgba(224,0,0,0.6)";
+		  gS2.fillRect(300,160,housing,15);
+		  gS2.fillStyle = "rgba(0,128,128,0.6)";
+		  gS2.fillRect(400,180,risk,15);
+		  gS2.fillStyle = "rgba(128,0,128,0.6)";
+		  gS2.fillRect(300,200,work,15);
+		  gS2.fillStyle = "rgba(0,0,224,0.6)";
+		  gS2.fillRect(400,220,save,15);
+		  //
+		  gS2.fillStyle = "rgb(224,224,224)";
+		  gS2.fillRect(154,239,412,92);
+		  gS2.fillStyle = "rgb(255,255,255)";
+		  gS2.fillRect(155,240,410,90);
+		  gS2.fillStyle = "rgb(0,0,0)";
+		   gS2.font = "italic 12px Arial";
+		  gS2.fillText("Housing preferences",160,255);
+		  gS2.fillText("Work preferences",295,255);
+		  //
+		  gS2.fillStyle = "rgb(128,0,0)";
+		  gS2.font = "12px Arial";
+		  gS2.fillText("Location:        "+locate,180,270);
+		  gS2.fillText("Space:            "+space,180,290);
+		  gS2.fillText("Affordability:  "+affordability,180,310);
+		  gS2.fillText("Pay:       "+pay,310,270);
+		  gS2.fillText("Culture: "+culture,310,290);
+		  gS2.fillText("Leisure:  "+leisure,310,310);
+		  gS2.fillText("Risk Aversion: "+delta,420,270);
+		  gS2.fillText("Saving:      "+future,420,300);
+		  gS2.fillText("Spending: "+present,420,320);
+	                }
+       }  	
+      </script>  
+      <style type="text/css">  
+            canvas { border: 0px solid black; }  
+      </style>  
+</head>  
+<body onload="start();">
+<form>
+<table border = "0" width = "800" cellpadding = "0" cellspacing = "0">
+  <tr>
+    <td>
+<span id = "choose">
+<x2><b>An Economic Life -- select your preferences</b></x2>
+<x3>Before you can begin, you need to reveal your preferences for things like work, pay, leisure and fun. Are you risk averse -- 
+hate uncertainty or risk seeking (a thrill seeker)? How about where you live? Do you like to be close to work -- biking or walking distance? 
+Or are you willing to trade-off location for more space and affordability? Moving the sliders is a bit like taking a survey. The ends represent extremes. 
+The middle means that you are neutral or indifferent. A bit to the left or right and you show mild preferences for one extreme or the other. 
+Make your choices then click 'Submit' to start.</x3>
+<x1><b>1. Where you live:</b><br/></x1>
+<x><b>a. Location:</b>  (doesn't matter) <input name="slide1" type="range"  min="1.0" max="5.0" value="3.0" step="1.0"/> (closer to work - walking / biking distance)<br/></x>
+<x><b>b. Affordabiltiy:</b>  (less (35 - 50% of income)) <input name="slide2" type="range"  min="1.0" max="5.0" value="3.0" step="1.0"/> (more: (20 - 25% of income))<br/></x>
+<x><b>c. Space:</b> (smaller ~400 sq.ft.)  <input name="slide3" type="range"  min="1.0" max="5.0" value="3.0" step="1.0"/> (larger 1,500 sq.ft.)<br/></x>
+<x1><b>2. Risk Aversion:</b><br/></x1>
+<x><b>d.</b> (very risk averse) <input name="slide4" type="range"  min="1.0" max="5.0" value="3.0" step="1.0"/>(risk loving /thrill seeker)<br/></x>
+<x1><b>3. Your profession:</b><br/></x1>
+<x><b>e. Pay:</b> (adequate)  <input name="slide5" type="range"  min="1.0" max="5.0" value="3.0" step="1.0"/> (S/he who dies with the most money, wins!)<br/></x>
+<x><b>f. Culture:</b> (not importqant)  <input name="slide6" type="range"  min="1.0" max="5.0" value="3.0" step="1.0"/> (very important: teamwork and creativtiy)<br/></x>
+<x><b>g. Leisure:</b> (I'm a workaholic)  <input name="slide7" type="range"  min="1.0" max="5.0" value="3.0" step="1.0"/> (all work and no play makes me dull)<br/></x>
+<x1><b>4. Living for the moment:</b><br/></x1>
+<x><b>h. Saving:</b>  (let the future take care of it's self) <input name="slide8" type="range" min="1.0" max="5.0" value="3.0" step="1.0"/>(I want to retire early)<br/></x>
+<x><b>i. Disposable Income:</b>  (I don't need much stuff) <input name = "slide9" type="range" min="1.0" max="5.0" value="3.0" step="1.0"/> (live to today - spend/have fun!)<br/></x>
+<x1><input type="button" value="Submit" onclick = "utility(this.form.slide1.value,this.form.slide2.value,this.form.slide3.value,this.form.slide4.value,this.form.slide5.value,this.form.slide6.value,this.form.slide7.value,this.form.slide8.value,this.form.slide9.value);"/></x1>
+</span>
+         <span id = "sim">
+         <canvas id="Life2" width="800" height="400" bgcolor="white">
+        </canvas>  </span>
+    </td>
+    
+  </tr>
+  <tr>
+    <td bgcolor="#dfdfdf" align="center" width="700">
+   <span id = "sim2">
+       <input type = "button" value="Utility" onclick = "do4();"/>
+      <input type = "button" value="Paystub" onclick = "do2();"/>
+      <input type = "button" value="Expenses" onclick = "do3();"/>
+      <input type = "text" width = "30" name="ans" value = "" onchange ="do1(this.form.ans.value);" onfocus = "if(this.value !='') this.style.backgroundColor = '#6496db';  this.value='';"/>
+        <input type="button" value="Next" onclick="doSomething()">  </span>
+    </td>
+  </tr>
+</table>
+</form>
+</body>  
+</html>  
